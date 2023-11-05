@@ -1,0 +1,55 @@
+{
+    "image": "car.jpg",
+    "questions": [
+      {
+        "question": "Hybrid cars can run solely on electric power",
+        "answer":"False",
+        "actual":"Hybrid cars use a combination of electric and gasoline power, but they cannot run solely on electric power."
+      },
+      {
+        "question":"The Eiffel Tower was once used as a giant advertising billboard for Citroën car",
+        "answer":"True",
+        "actual":""
+      },
+      {
+        "question":"Brake fluid is typically clear or pale yellow",
+        "answer":"True",
+        "actual":""
+      },
+      {
+        "question":"All convertibles have soft tops",
+        "answer":"False",
+        "actual":"Some convertibles have retractable hardtops, which are made of metal"
+      },
+      {
+        "question":"The battery in a modern car is charged by an alternator",
+        "answer":"True",
+        "actual":""
+      },
+      {
+        "question":"Electric cars require oil changes",
+        "answer":"False",
+        "actual":"Eectric cars do not have internal combustion engines and, therefore, do not require oil changes"
+      },
+      {
+        "question":"SUV stands for 'Sports Utility Vehicle'",
+        "answer":"True",
+        "actual":""
+      }, 
+      {
+        "question":"A V6 engine has more cylinders than a V8 engine",
+        "answer":"False",
+        "actual":"A V6 engine has fewer cylinders (6) compared to a V8 engine (8)"
+      },
+      {
+        "question":"The Ford Model T was the first mass-produced car in the world",
+        "answer":"True",
+        "actual":""
+      },
+      {
+        "question":"All-wheel drive (AWD) and four-wheel drive (4WD) are the same thing",
+        "answer":"False",
+        "actual":"AWD is typically always active, while 4WD can often be manually engaged or disengaged"
+      }
+    ]
+  }

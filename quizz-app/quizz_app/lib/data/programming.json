@@ -1,0 +1,55 @@
+{
+    "image": "programming.jpg",
+    "questions": [
+      {
+        "question": "Java is an interpreted language",
+        "answer":"False",
+        "actual":"Java is a compiled language. It first compiles code into bytecode, which is then executed by the Java Virtual Machine (JVM)"
+      },
+      {
+        "question":"HTML is a markup language and not considerd a programming language",
+        "answer":"True",
+        "actual":""
+      },
+      {
+        "question":"Python uses braces ({}) for block delimiters",
+        "answer":"False",
+        "actual":"Python uses indentation, not braces, to define blocks of code"
+      },
+      {
+        "question":"C++ is an extension of C",
+        "answer":"True",
+        "actual":""
+      },
+      {
+        "question":"PHP is a compiled language",
+        "answer":"False",
+        "actual":"PHP is an interpreted language"
+      },
+      {
+        "question":"Recursion is an alternative to loops in programming",
+        "answer":"True",
+        "actual":""
+      },
+      {
+        "question":"C# is primarily used for web development.",
+        "answer":"False",
+        "actual":"C# is a versatile language used in various applications, including web development"
+      }, 
+      {
+        "question":"In object-oriented programming, a class is a blueprint for creating objects",
+        "answer":"True",
+        "actual":""
+      },
+      {
+        "question":"Python is an interpreted language",
+        "answer":"True",
+        "actual":""
+      },
+      {
+        "question":"JavaScript is case-insensitive",
+        "answer":"False",
+        "actual":"JavaScript is case-sensitive, so 'variable' and 'Variable' are treated as different identifiers"
+      }
+    ]
+  }

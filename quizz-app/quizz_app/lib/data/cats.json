@@ -1,34 +1,54 @@
 {
-  "image": "test",
+  "image": "cat.jpg",
   "questions": [
     {
-      "question": "Do cats have more bones than humans?",
+      "question": "They have less bones than humans",
+      "answer":"False",
+      "actual":"They have 230 to 250 bones, humans have 206 bones"
+    },
+    {
+      "question":"A group of kittens is called a kindle",
       "answer":"True",
       "actual":""
     },
     {
-      "question":"Is a group of kittens is called a kindle?",
+      "question":"All cats hate water?",
+      "answer":"False",
+      "actual":"While many cats dislike water, some actually enjoy it"
+    },
+    {
+      "question":"They have 34 whiskers?",
+      "answer":"False",
+      "actual":"They have 24 whiskers"
+    },
+    {
+      "question":"Their brain is 60% similar to a human's brain",
+      "answer":"False",
+      "actual":"Their brain is 90% similar to a human's brain"
+    },
+    {
+      "question":"They have a specialized collarbone that allows them to always land on their feet",
+      "answer":"False",
+      "actual":"They have a flexible spine and a highly developed inner ear that helps them land on their feet, not a specialized collarbone"
+    },
+    {
+      "question":"They have a sweet tooth and enjoy sugary foods",
+      "answer":"False",
+      "actual":"They can't taste sweet flavors and shouldn't consume sugary foods"
+    }, 
+    {
+      "question":"The largest breed the Maine Coon",
       "answer":"True",
       "actual":""
     },
     {
-      "question":"Do all cats hate water",
+      "question":"Hairballs are a normal and healthy part of a cat's digestive process",
       "answer":"False",
-      "actual":"Some like water"
+      "actual":"Frequent hairballs may indicate a problem; they should not be too common"
     },
     {
-      "question":"Do cats have 34 whiskers",
-      "answer":"False",
-      "actual":"They have 24 whiskers."
-    },
-    {
-      "question":"Is the cat's brain 60% similar to a human's brain?",
-      "answer":"False",
-      "actual":"It is 90% similar to a human's brain."
-    },
-    {
-      "question":"Are cats vegetarians?",
-      "answer":"",
+      "question":"They can be left-pawed or right-pawed",
+      "answer":"True",
       "actual":""
     }
   ]

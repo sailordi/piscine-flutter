@@ -1,0 +1,55 @@
+{
+    "image": "space.jpg",
+    "questions": [
+      {
+        "question": "The Great Red Spot is a storm on Mars",
+        "answer":"False",
+        "actual":"It is a giant storm on Jupiter"
+      },
+      {
+        "question":"Saturn's rings are made up of countless individual particless",
+        "answer":"True",
+        "actual":""
+      },
+      {
+        "question":"Halley's Comet returns to the inner solar system roughly every 76 years",
+        "answer":"True",
+        "actual":""
+      },
+      {
+        "question":"The International Space Station (ISS) is located in geosynchronous orbit",
+        "answer":"False",
+        "actual":"The ISS is in low Earth orbit, not geosynchronous orbit"
+      },
+      {
+        "question":"The concept of a wormhole is purely science fiction and has no basis in theoretical physics",
+        "answer":"False",
+        "actual":"Wormholes are theoretical solutions to Einstein's equations of general relativity"
+      },
+      {
+        "question":"Other plantes than Earth have an atmosphere",
+        "answer":"True",
+        "actual":""
+      },
+      {
+        "question":"A light-year is a unit of time",
+        "answer":"False",
+        "actual":"A light-year is a unit of distance, representing the distance that light travels in one year"
+      }, 
+      {
+        "question":" It takes Venus 243 Earth days to rotate on its axis",
+        "answer":"True",
+        "actual":""
+      },
+      {
+        "question":"The speed of light is constant in a vacuum",
+        "answer":"True",
+        "actual":""
+      },
+      {
+        "question":"Pluto is a planet.",
+        "answer":"False",
+        "actual":"Pluto was reclassified as a dwarf planet in 2006"
+      }
+    ]
+  }
