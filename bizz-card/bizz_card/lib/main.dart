@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'BizzCard',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'BizzCard'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -110,10 +111,18 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            CircleAvatar(
-              radius: 100, // Adjust the size of the circular image
-              backgroundImage: AssetImage('assets/images/black-dragon-art-wallpaper.jpg'), // Replace with your image URL
+           Container(
+             width: 280,
+             height: 250,
+            decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  image: AssetImage('assets/images/black-dragon-art-wallpaper.jpg'),
+                  fit: BoxFit.fill,
+                )
+            )
             ),
+            SizedBox(height: 20),
             Text(
               '$_firstName $_lastName',
               style:  TextStyle(
@@ -121,6 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 fontSize: 30,
               ),
             ),
+            SizedBox(height: 20),
             Text(
               _getAge().toString(),
               style:  TextStyle(
