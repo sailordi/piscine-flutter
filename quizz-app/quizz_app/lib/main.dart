@@ -1,4 +1,8 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
+import 'package:quizz_app/adapter/dataAdapter.dart';
+import 'package:quizz_app/models/Category.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,13 +36,13 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Quizz App'),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
   // how it looks.
@@ -55,9 +59,32 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  DataAdapter dataA = DataAdapter();
+  List<Category> categories = [];
+  int selectedCategory = -1;
+  int score = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  Future<void> loadData() async {
+    DataAdapter dataA = DataAdapter();
+    List<Category> loadedCategories = await dataA.getCategories();
+
+    setState(() {
+      categories = loadedCategories;
+    });
+    
+  } 
 
   @override
   Widget build(BuildContext context) {
+    if(categories.isEmpty) {
+      return CircularProgressIndicator();
+    }
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
