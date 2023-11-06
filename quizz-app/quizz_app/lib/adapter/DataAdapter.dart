@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:developer';
 import 'package:quizz_app/models/Category.dart';
-import 'package:quizz_app/models/Question.dart';
 
 const int minQuestions = 10;
 const int minCategories = 5;
