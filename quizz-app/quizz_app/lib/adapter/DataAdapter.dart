@@ -22,9 +22,9 @@ class DataAdapter {
         Category cat = Category.fromJson(jsonData);
 
         if(cat.questions.length < minQuestions) {
-          log('Error category has less than $minQuestions questions');  
+          log('Error category has less than $minQuestions questions');
         }else {
-          ret.add(Category.fromJson(jsonData) );
+          ret.add(cat);
         }
 
       }
@@ -33,8 +33,10 @@ class DataAdapter {
       log('Error reading files: $e');
     }
 
-    if(ret.length < minCategories) {
-      log('Error to few categories found need at least $minCategories categorys');
+    int categories = ret.length;
+
+    if(categories < minCategories) {
+      log('Error to few categories found need at least $minCategories categorys [$categories]');
       exit(1); 
     }
 
@@ -52,8 +54,7 @@ class DataAdapter {
   }
 
   Future<Map<String, dynamic> > _getJsonData(String file) async {
-      File jsonFile = File(file);
-      String jsonString = await jsonFile.readAsString();
+      String jsonString = await rootBundle.loadString(file);
       return json.decode(jsonString);
   }
 

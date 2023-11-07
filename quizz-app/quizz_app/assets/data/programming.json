@@ -4,52 +4,52 @@
     "questions": [
       {
         "question": "Java is an interpreted language",
-        "answer":"False",
+        "answer":false,
         "actual":"Java is a compiled language. It first compiles code into bytecode, which is then executed by the Java Virtual Machine (JVM)"
       },
       {
         "question":"HTML is a markup language and not considerd a programming language",
-        "answer":"True",
+        "answer":true,
         "actual":""
       },
       {
         "question":"Python uses braces ({}) for block delimiters",
-        "answer":"False",
+        "answer":false,
         "actual":"Python uses indentation, not braces, to define blocks of code"
       },
       {
         "question":"C++ is an extension of C",
-        "answer":"True",
+        "answer":true,
         "actual":""
       },
       {
         "question":"PHP is a compiled language",
-        "answer":"False",
+        "answer":false,
         "actual":"PHP is an interpreted language"
       },
       {
         "question":"Recursion is an alternative to loops in programming",
-        "answer":"True",
+        "answer":true,
         "actual":""
       },
       {
         "question":"C# is primarily used for web development.",
-        "answer":"False",
+        "answer":false,
         "actual":"C# is a versatile language used in various applications, including web development"
       }, 
       {
         "question":"In object-oriented programming, a class is a blueprint for creating objects",
-        "answer":"True",
+        "answer":true,
         "actual":""
       },
       {
         "question":"Python is an interpreted language",
-        "answer":"True",
+        "answer":true,
         "actual":""
       },
       {
         "question":"JavaScript is case-insensitive",
-        "answer":"False",
+        "answer":false,
         "actual":"JavaScript is case-sensitive, so 'variable' and 'Variable' are treated as different identifiers"
       }
     ]

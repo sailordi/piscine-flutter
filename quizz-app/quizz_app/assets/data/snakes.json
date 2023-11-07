@@ -4,52 +4,52 @@
     "questions": [
       {
         "question": "They have ears",
-        "answer":"False",
+        "answer":false,
         "actual":"Snakes lack external ears, but they can sense vibrations and sound through their jawbones"
       },
       {
         "question":"Some breeds give birth to live young",
-        "answer":"True",
+        "answer":true,
         "actual":""
       },
       {
         "question":"Rattlesnakes can be found in Europe",
-        "answer":"False",
+        "answer":false,
         "actual":"Rattlesnakes are primarily found in the Americas"
       },
       {
         "question":"All breeds can swim?",
-        "answer":"True",
+        "answer":true,
         "actual":""
       },
       {
         "question":"The most venomus breed is the king cobra",
-        "answer":"False",
+        "answer":false,
         "actual":"The inland taipan holds the title for the most venomous snake"
       },
       {
         "question":"They need external sources to regulate their body temperature",
-        "answer":"True",
+        "answer":true,
         "actual":""
       },
       {
         "question":"All l constrictor snakes are non-venomous",
-        "answer":"False",
+        "answer":false,
         "actual":"Western terrestrial garter, South American massuranas,some species of Asian Boiga, some Australian elapids and colubrids are all constrictors that are venomus"
       }, 
       {
         "question":"They need to eat at least once a week",
-        "answer":"False",
+        "answer":false,
         "actual":"They can goo sevral weeks whithout eating"
       },
       {
         "question":"They can regrow lost body parts like tails",
-        "answer":"False",
+        "answer":false,
         "actual":"They cannot regrow lost body parts like tails, unlike some other reptiles"
       },
       {
         "question":"The longest venomus breed is the Black Mamba",
-        "answer":"False",
+        "answer":false,
         "actual":"The longest breed is the King cobra"
       }
     ]

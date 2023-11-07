@@ -4,52 +4,52 @@
   "questions": [
     {
       "question": "They have less bones than humans",
-      "answer":"False",
+      "answer":false,
       "actual":"They have 230 to 250 bones, humans have 206 bones"
     },
     {
       "question":"A group of kittens is called a kindle",
-      "answer":"True",
+      "answer":true,
       "actual":""
     },
     {
       "question":"All cats hate water?",
-      "answer":"False",
+      "answer":false,
       "actual":"While many cats dislike water, some actually enjoy it"
     },
     {
       "question":"They have 34 whiskers?",
-      "answer":"False",
+      "answer":false,
       "actual":"They have 24 whiskers"
     },
     {
       "question":"Their brain is 60% similar to a human's brain",
-      "answer":"False",
+      "answer":false,
       "actual":"Their brain is 90% similar to a human's brain"
     },
     {
       "question":"They have a specialized collarbone that allows them to always land on their feet",
-      "answer":"False",
+      "answer":false,
       "actual":"They have a flexible spine and a highly developed inner ear that helps them land on their feet, not a specialized collarbone"
     },
     {
       "question":"They have a sweet tooth and enjoy sugary foods",
-      "answer":"False",
+      "answer":false,
       "actual":"They can't taste sweet flavors and shouldn't consume sugary foods"
     }, 
     {
       "question":"The largest breed the Maine Coon",
-      "answer":"True",
+      "answer":true,
       "actual":""
     },
     {
       "question":"Hairballs are a normal and healthy part of a cat's digestive process",
-      "answer":"False",
+      "answer":false,
       "actual":"Frequent hairballs may indicate a problem; they should not be too common"
     },
     {
       "question":"They can be left-pawed or right-pawed",
-      "answer":"True",
+      "answer":true,
       "actual":""
     }
   ]
