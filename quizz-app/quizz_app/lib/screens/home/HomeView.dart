@@ -3,14 +3,14 @@ import 'package:quizz_app/adapter/DataAdapter.dart';
 import 'package:quizz_app/models/Category.dart';
 import 'package:quizz_app/widgets/CategoriesGrid.dart';
 
-class HomeScreen extends StatefulWidget {
-  HomeScreen();
+class HomeView extends StatefulWidget {
+  const HomeView({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeViewState extends State<HomeView> {
   List<Category> categories = [];
 
   @override

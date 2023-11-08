@@ -3,6 +3,7 @@ import 'package:quizz_app/models/Category.dart';
 import 'package:quizz_app/models/Question.dart';
 import 'package:quizz_app/models/Score.dart';
 import 'package:quizz_app/screens/score/ScoreView.dart';
+import 'package:quizz_app/widgets/WidgetFactory.dart';
 
 class DetailedView extends StatefulWidget  {
   final Category category;
@@ -50,11 +51,11 @@ class _DetailedViewState extends  State<DetailedView> {
       widget.answer = '';
     });
 
-    if(widget.question+1 == widget.category.questions.length) {
+    if(widget.question == widget.category.questions.length) {
        Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => ScoreView(widget.category.name,widget.score)
+          builder: (context) => ScoreView(widget.category.name,widget.score,widget.category.imageUrl)
         ),
       );
     }
@@ -65,55 +66,49 @@ class _DetailedViewState extends  State<DetailedView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Quiz app: ${widget.category.name.toLowerCase()}'),
+        flexibleSpace: Image(
+          image: AssetImage(widget.category.imageUrl),
+          fit: BoxFit.cover,
+        ),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Image.asset(widget.category.imageUrl),
-          Text(widget.category.questions[widget.question].question),
-          const SizedBox(height: 20),
-          Visibility(
-              visible: widget.answer.isNotEmpty,
-              child: Text(widget.answer)
-          ),
-          if(widget.answer.isNotEmpty) 
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
             const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Visibility(
-                visible: !widget.nextQuestion,
-                child: ElevatedButton(
-                  onPressed: () {
-                    setAnswer(true);
-                  },
-                  child: const Text('true'),
-                ),
+            Text('Question ${widget.question+1} of ${widget.category.questions.length}',
+              style:  TextStyle(
+                fontSize: 20,
               ),
-              Visibility(
-                visible: !widget.nextQuestion,
-                child: ElevatedButton(
-                  onPressed: () {
-                    setAnswer(false);
-                  },
-                  child: const Text('false'),
-                ),
-              ),
-            ],
-          ),
-          // Add Next button with conditional visibility
-          Visibility(
-            visible: widget.nextQuestion,
-            child: ElevatedButton(
-              onPressed: () {
-                nextQuestion();
-              },
-              child: const Text('Next'),
             ),
-          ),
-        ],
+            const SizedBox(height: 30),
+            if(widget.question < widget.category.questions.length)
+              Text(widget.category.questions[widget.question].question,
+                style:  TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+            const SizedBox(height: 30),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                WidgetFactory.hideShowBtn(!widget.nextQuestion, "True", () {setAnswer(true); } ),
+                const SizedBox(width: 30),
+                WidgetFactory.hideShowBtn(!widget.nextQuestion, "False", () {setAnswer(false); } ),
+              ],
+            ),
+            WidgetFactory.hideShowBtn(widget.nextQuestion, "Next", () { nextQuestion(); } ),
+            if(widget.answer.isNotEmpty)
+              const SizedBox(height: 30),
+            Visibility(
+                visible: widget.answer.isNotEmpty,
+                child: Text(widget.answer,
+                  style:  TextStyle(
+                    fontSize: 20,
+                  ),)
+            ),
+          ],
+        ),
       ),
     );
   }
