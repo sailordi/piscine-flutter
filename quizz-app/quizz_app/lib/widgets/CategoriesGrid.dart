@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quizz_app/models/Category.dart';
 import 'package:quizz_app/screens/question/DetailedView.dart';
+import 'package:quizz_app/widgets/WidgetFactory.dart';
 
 class CategoriesGrid extends StatelessWidget {
     final List<Category> categories;
@@ -21,7 +22,7 @@ class CategoriesGrid extends StatelessWidget {
             elevation: 0,
             color: Colors.black,
 
-            child: Image.asset(cat.imageUrl,fit: BoxFit.cover),
+            child: WidgetFactory.imageWithText(cat.imageUrl, cat.name, Colors.white),
           )
       );
     }

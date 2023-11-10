@@ -66,6 +66,10 @@ class _DetailedViewState extends  State<DetailedView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text('Quiz app: \n${widget.category.name}',style: TextStyle(
+          color: Colors.amber,
+          ),
+        ),
         flexibleSpace: Image(
           image: AssetImage(widget.category.imageUrl),
           fit: BoxFit.cover,
@@ -102,10 +106,10 @@ class _DetailedViewState extends  State<DetailedView> {
               const SizedBox(height: 30),
             Visibility(
                 visible: widget.answer.isNotEmpty,
-                child: Text(widget.answer,
-                  style:  TextStyle(
+                child: Text(widget.answer,style:  TextStyle(
                     fontSize: 20,
-                  ),)
+                  ),
+                )
             ),
           ],
         ),

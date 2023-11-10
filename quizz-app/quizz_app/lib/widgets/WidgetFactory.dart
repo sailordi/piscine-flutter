@@ -12,4 +12,16 @@ class WidgetFactory {
         ),
     );
   }
+
+  static Stack imageWithText(String imageUrl,String text,Color color) {
+    return Stack(
+      children: <Widget>[
+        Image.asset(imageUrl,fit: BoxFit.cover),
+        Text(text,style:  TextStyle(
+          color: color,
+        )
+        )
+      ],
+    );
+  }
 }

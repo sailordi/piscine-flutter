@@ -13,6 +13,10 @@ class ScoreView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text('Quiz app:\n$category score',style: TextStyle(
+          color: Colors.amber,
+        ),
+        ),
         flexibleSpace: Image(
           image: AssetImage(imageUrl),
           fit: BoxFit.cover,
