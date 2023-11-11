@@ -17,7 +17,7 @@ class DataAdapter {
       log('Error reading files: $e');
     }
 
-    ret.sort((a, b) => b.imdbRating.compareTo(a.imdbRating));
+    ret.sort(_ratingSort);
 
     return ret;
   }
@@ -28,6 +28,18 @@ class DataAdapter {
     final List<dynamic> jsonList = json.decode(jsonString);
 
     return jsonList;
+  }
+
+  int _ratingSort(Movie a,Movie b) {
+    if (a.imdbRating == "N/A" && b.imdbRating != "N/A") {
+      return -1; // "N/A" comes first
+    } else if (a.imdbRating != "N/A" && b.imdbRating == "N/A") {
+      return 1; // "N/A" comes first
+    }
+    else {
+      return a.imdbRating.compareTo(b.imdbRating);
+    }
+
   }
 
 }
