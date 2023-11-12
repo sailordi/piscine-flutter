@@ -21,17 +21,17 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('MovieList'),
+        title: const Text('MovieList'),
       ),
       body: FutureBuilder<List<Movie> >(
         future: loadMovies(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return Center(child: Text('Error loading movies'));
+            return const Center(child: Text('Error loading movies'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text('No movies available'));
+            return const Center(child: Text('No movies available'));
           } else {
             return MovieList.list(snapshot.data!);
           }
