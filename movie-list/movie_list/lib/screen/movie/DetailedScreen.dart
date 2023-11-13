@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_list/models/Movie.dart';
 import 'package:movie_list/widgets/ImageWidget.dart';
+import 'package:movie_list/widgets/TextWidget.dart';
 
 class DetailedScreen extends StatelessWidget {
   final Movie movie;
@@ -12,35 +13,18 @@ class DetailedScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('MovieList: ${movie.title}'),
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           ImageWidget.detailedImage(movie.poster),
-          Text('Genres:${movie.genre}',style:  const TextStyle(
-            fontSize: 20,
-          ),
-          ),
-          Text('Director: ${movie.director}',style:  const TextStyle(
-            fontSize: 20,
-          ),
-          ),
-          Text('Actors: ${movie.actors}',style:  const TextStyle(
-            fontSize: 20,
-          ),
-          ),
-          Text('Awards: ${movie.awards}',style:  const TextStyle(
-            fontSize: 20,
-          ),
-          ),
-          Text('Rating: ${movie.rating}',style:  const TextStyle(
-            fontSize: 20,
-          ),
-          ),
-          Text('IMDB rating: ${movie.imdbRating}',style:  const TextStyle(
-            fontSize: 20,
-          ),
-          ),
+          TextWidget.detailedText('Genres: ', movie.genre),
+          TextWidget.detailedText('Director: ', movie.director),
+          TextWidget.detailedText('Actors: ', movie.actors,newRow: true),
+          TextWidget.detailedText('Awards: ', movie.awards,newRow: true),
+          TextWidget.detailedText('Rating: ', movie.rating),
+          TextWidget.detailedText('IMDB rating: ', movie.imdbRating),
         ],
       ),
     );

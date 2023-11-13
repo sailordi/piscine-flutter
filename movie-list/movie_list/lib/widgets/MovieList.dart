@@ -7,6 +7,19 @@ class MovieList {
   MovieList();
 
   static ListView list(List<Movie> data) {
+    if(data.length < 2) {
+      return ListView.builder(
+          itemCount: data.length,
+          itemBuilder: (context, index) {
+            return Row(
+              children: <Widget>[
+                Expanded(child: _item(data[index],context) ),
+              ],
+            );
+          }
+      );
+    }
+
     return ListView.builder(
         itemCount: data.length~/2,
         itemBuilder: (context, index) {
@@ -23,14 +36,24 @@ class MovieList {
 
   static ListTile _item(Movie m,BuildContext context) {
       return ListTile(
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              ImageWidget.homeImage(m.poster),
-              Text(m.title),
-              Text(m.genre),
-              Text('IMDB Rating: ${m.imdbRating}')
-            ],
+          subtitle:
+          Container(
+            height: 285.0,
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black)
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                ImageWidget.homeImage(m.poster),
+                Text(m.title,style: const TextStyle(
+                    fontWeight: FontWeight.bold
+                ),
+                ),
+                Text(m.genre),
+                Text('IMDB Rating: ${m.imdbRating}')
+              ],
+            ),
           ),
           onTap: () {
             Navigator.push(

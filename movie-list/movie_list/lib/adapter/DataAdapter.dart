@@ -32,12 +32,12 @@ class DataAdapter {
 
   int _ratingSort(Movie a,Movie b) {
     if (a.imdbRating == "N/A" && b.imdbRating != "N/A") {
-      return -1; // "N/A" comes first
-    } else if (a.imdbRating != "N/A" && b.imdbRating == "N/A") {
       return 1; // "N/A" comes first
+    } else if (a.imdbRating != "N/A" && b.imdbRating == "N/A") {
+      return -1; // "N/A" comes first
     }
     else {
-      return a.imdbRating.compareTo(b.imdbRating);
+      return b.imdbRating.compareTo(a.imdbRating);
     }
 
   }
