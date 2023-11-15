@@ -66,7 +66,7 @@ class _DetailedViewState extends  State<DetailedView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quiz app: \n${widget.category.name}',style: TextStyle(
+        title: Text('Quiz app: \n${widget.category.name}',style: const TextStyle(
           color: Colors.amber,
           ),
         ),
@@ -81,14 +81,14 @@ class _DetailedViewState extends  State<DetailedView> {
           children: <Widget>[
             const SizedBox(height: 20),
             Text('Question ${widget.question+1} of ${widget.category.questions.length}',
-              style:  TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
               ),
             ),
             const SizedBox(height: 30),
             if(widget.question < widget.category.questions.length)
               Text(widget.category.questions[widget.question].question,
-                style:  TextStyle(
+                style:  const TextStyle(
                   fontSize: 20,
                 ),
               ),
@@ -106,7 +106,7 @@ class _DetailedViewState extends  State<DetailedView> {
               const SizedBox(height: 30),
             Visibility(
                 visible: widget.answer.isNotEmpty,
-                child: Text(widget.answer,style:  TextStyle(
+                child: Text(widget.answer,style:  const TextStyle(
                     fontSize: 20,
                   ),
                 )

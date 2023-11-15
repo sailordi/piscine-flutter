@@ -3,12 +3,9 @@ import 'package:quizz_app/models/Category.dart';
 import 'package:quizz_app/screens/question/DetailedView.dart';
 import 'package:quizz_app/widgets/WidgetFactory.dart';
 
-class CategoriesGrid extends StatelessWidget {
-    final List<Category> categories;
-    
-    const CategoriesGrid(this.categories, {super.key});
+class CategoriesGrid {
 
-    GestureDetector _categoryCard(Category cat,BuildContext context) {
+    static dynamic _categoryCard(Category cat,BuildContext context) {
       return GestureDetector(
           onTap: () {
             Navigator.push(
@@ -27,8 +24,7 @@ class CategoriesGrid extends StatelessWidget {
       );
     }
 
-    @override
-    Widget build(BuildContext context) {
+    static GridView grid(List<Category> categories) {
       return GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           mainAxisSpacing: 8,

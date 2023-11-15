@@ -37,10 +37,10 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text("Quiz app"),
+        title: const Text("Quiz app"),
       ),
       body: Center(
-          child: CategoriesGrid(categories)
+          child: CategoriesGrid.grid(categories)
       ),
     );
 

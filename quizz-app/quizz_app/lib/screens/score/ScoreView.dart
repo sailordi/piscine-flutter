@@ -13,7 +13,7 @@ class ScoreView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Quiz app:\n$category score',style: TextStyle(
+        title: Text('Quiz app:\n$category score',style: const TextStyle(
           color: Colors.amber,
         ),
         ),
@@ -27,7 +27,7 @@ class ScoreView extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Text(score.text(),
-              style:  TextStyle(
+              style: const TextStyle(
                 fontSize: 25,
               ),
             ),
