@@ -15,7 +15,7 @@ class ImageAdapter {
       for(var fN in imagePaths) {
         try {
          ret.add(File(fN) );
-        }catch(ex) {
+        } on Exception catch (e) {
           log('Could not load file $fN');
         }
 

@@ -26,7 +26,7 @@ class _HomeViewState extends State<HomeView> {
   void _addFile(File f) {
     setState(() {
       _images.add(f);
-      //ImageAdapter.saveImages(_images);
+      ImageAdapter.saveImages(_images);
     });
   }
 

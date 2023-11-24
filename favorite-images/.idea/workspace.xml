@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="257fe232-d374-4cc3-9d27-522a32da983b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/favorite_images/lib/adapter/imageAdapter.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/favorite_images/lib/widgets/imageGrid.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/favorite_images/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/favorite_images/ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/ios/Podfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/favorite_images/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/ios/Runner/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/favorite_images/lib/adapter/imageAdapter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/lib/adapter/imageAdapter.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/favorite_images/lib/screens/home/HomeView.dart" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/lib/screens/home/HomeView.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/favorite_images/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/favorite_images/macos/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/macos/Podfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/favorite_images/macos/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/macos/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/favorite_images/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/favorite_images/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/favorite_images/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/windows/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/favorite_images/macos/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/macos/Runner/Info.plist" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,19 +36,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;AndroidSdkUpdater&quot;,
-    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "cidr.known.project.marker": "true",
+    "com.android.tools.idea.devicemanager.tab": "Physical",
+    "com.google.services.firebase.aqiPopupShown": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "io.flutter.reload.alreadyRun": "true",
+    "settings.editor.selected.configurable": "AndroidSdkUpdater",
+    "show.migrate.to.gradle.popup": "false"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="$PROJECT_DIR$/favorite_images/lib/main.dart" />
