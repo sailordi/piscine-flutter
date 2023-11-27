@@ -10,15 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="257fe232-d374-4cc3-9d27-522a32da983b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/favorite_images/ios/Podfile.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/favorite_images/lib/screens/image/DetailScreen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/favorite_images/lib/widgets/imageWidget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/favorite_images/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/android/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/favorite_images/ios/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/ios/Podfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/favorite_images/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/favorite_images/ios/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/ios/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/favorite_images/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/ios/Runner/Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/favorite_images/lib/adapter/imageAdapter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/lib/adapter/imageAdapter.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/favorite_images/lib/screens/home/HomeView.dart" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/lib/screens/home/HomeView.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/favorite_images/macos/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/macos/Podfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/favorite_images/macos/Podfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/macos/Podfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/favorite_images/macos/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/macos/Runner/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/favorite_images/lib/widgets/imageGrid.dart" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/lib/widgets/imageGrid.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/favorite_images/macos/Runner/DebugProfile.entitlements" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/macos/Runner/DebugProfile.entitlements" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/favorite_images/macos/Runner/Release.entitlements" beforeDir="false" afterPath="$PROJECT_DIR$/favorite_images/macos/Runner/Release.entitlements" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +40,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
@@ -66,5 +69,8 @@
       <updated>1700469543892</updated>
     </task>
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
