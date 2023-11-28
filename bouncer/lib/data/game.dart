@@ -12,9 +12,11 @@ const double blockWidth = 60,blockHeight = 20;
 enum GameState{notStarted,playing,won,lost}
 
 class Game{
-  GameState state = GameState.notStarted;
+  late GameState state;
 
-  Game();
+  Game() {
+    state = GameState.notStarted;
+  }
 
   static Player initPlayer() {
     return Player(x: playerX, y:playerY, width: 80.0, height: 10.0);

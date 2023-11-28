@@ -14,7 +14,6 @@ class HomeView extends StatefulWidget {
   State<HomeView> createState() => _HomeViewState();
 }
 
-
 class _HomeViewState extends State<HomeView> {
   Game game = Game();
   late Ball ball;
@@ -59,35 +58,58 @@ class _HomeViewState extends State<HomeView> {
     _startGame();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
+  dynamic _btn(String text,void Function() f,{String topText = ""}) {
+    if(topText.isEmpty) {
+      ElevatedButton(
+        onPressed: f,
+        child: Text(text),
+      );
+    }
+    return Column(
+        children: <Widget>[
+          Text(topText),
+          ElevatedButton(
+            onPressed: f,
+            child: Text(text),
+          )
+        ],
+      );
+
+  }
+
+  dynamic _gameField() {
+    if(game.state == GameState.won) {
+      return Center(
+        child: _btn("Continue game",_restart,topText: "You won"),
+      );
+    } else if(game.state == GameState.lost) {
+      return Center(
+        child: _btn("Restart game",_restart,topText: "You lost"),
+      );
+    }else if(game.state == GameState.notStarted) {
+      return Center(
+        child: _btn("Start game",_startGame),
+      );
+    }
+    return SizedBox(
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
+      child: Stack(
+        children: <Widget>[
           ball.widget(),
           player.widget(),
           for (Block b in blocks)
-            if (!b.broken)
-              b.widget(),
-          if(game.state == GameState.notStarted)
-            ElevatedButton(
-              onPressed: _startGame,
-              child: const Text("Start game"),
-            ),
-          if(game.state == GameState.lost)
-            const Text("You lost"),
-            ElevatedButton(
-              onPressed: _restart,
-              child: const Text("Restart game"),
-            ),
-          if(game.state == GameState.won)
-            const Text("You lost"),
-            ElevatedButton(
-              onPressed: _restart,
-              child: const Text("Restart game"),
-            ),
+          if (!b.broken)
+          b.widget(),
         ],
       ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _gameField(),
     );
   }
 
