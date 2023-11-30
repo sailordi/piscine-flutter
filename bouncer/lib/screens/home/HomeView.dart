@@ -27,13 +27,20 @@ class _HomeViewState extends State<HomeView> {
   }
 
   void _initGame() {
-    ball = Game.initBall();
-    player = Game.initPlayer();
+    gyroscopeEventStream(samplingPeriod: const Duration(milliseconds: 50) ).listen((GyroscopeEvent event) {
+      if (game.state == GameState.playing) {
+        game.updatePlayer(context, player, event.y);
+      }
+    });
+
     WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(() {
+        ball = Game.initBall(context);
+        player = Game.initPlayer(context);
         blocks = Game.initBlocks(context);
       });
     });
+
   }
 
   void _startGame() {
@@ -55,7 +62,14 @@ class _HomeViewState extends State<HomeView> {
 
   void _restart(){
     _initGame();
-    _startGame();
+    game.reset(context, ball, player, blocks);
+
+    setState(() {
+      ball;
+      player;
+      blocks;
+    });
+
   }
 
   dynamic _btn(String text,void Function() f,{String topText = ""}) {
@@ -109,7 +123,9 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _gameField(),
+      body: SafeArea(
+        child: _gameField(),
+      )
     );
   }
 

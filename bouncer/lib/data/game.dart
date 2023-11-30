@@ -4,9 +4,8 @@ import 'ball.dart';
 import 'block.dart';
 import 'player.dart';
 
-const double playerX = 100,playerY = 400.0;
-const double ballX = 120,ballY = 380,ballSpeedX = 2,ballSpeedY = 2;
-const numberOfBlockRows = 5;
+const double ballSpeedX = 2,ballSpeedY = 2;
+const numberOfBlockRows = 8;
 const double blockWidth = 60,blockHeight = 20;
 
 enum GameState{notStarted,playing,won,lost}
@@ -18,13 +17,18 @@ class Game{
     state = GameState.notStarted;
   }
 
-  static Player initPlayer() {
-    return Player(x: playerX, y:playerY, width: 80.0, height: 10.0);
+  static Player initPlayer(BuildContext context) {
+    (double,double) position = Player.startPosition(context);
+
+    return Player(x: position.$1, y:position.$2, width: 80.0, height: 10.0);
 
   }
 
-  static Ball initBall() {
-    return Ball(x: ballX, y: ballY, speedX: ballSpeedX,speedY: ballSpeedY);
+  static Ball initBall(BuildContext context) {
+    (double,double) position = Ball.startPosition(Player.startPosition(context) );
+
+
+    return Ball(x: position.$1, y: position.$2, speedX: ballSpeedX,speedY: ballSpeedY);
   }
 
   static Color _getRandomColor() {
@@ -58,15 +62,17 @@ class Game{
     return ret;
   }
 
-  void reset(Ball ball,Player player,List<Block> blocks) {
+  void reset(BuildContext context,Ball ball,Player player,List<Block> blocks) {
+    (double,double) playerPosition = Player.startPosition(context);
+    (double,double) ballPosition = Ball.startPosition(playerPosition);
 
     ball.speedX = ballSpeedX;
     ball.speedY = ballSpeedY;
-    ball.x = ballX;
-    ball.y = ballY;
+    ball.x = ballPosition.$1;
+    ball.y = ballPosition.$2;
 
-    player.x = playerX;
-    player.y = playerY;
+    player.x = playerPosition.$1;
+    player.y = playerPosition.$2;
 
     for(Block b in blocks) {
       b.broken = false;
@@ -75,32 +81,17 @@ class Game{
     state = GameState.playing;
   }
 
-  void _playerCollision(Ball ball,Player player) {
-    // Check collision with player
-    if (ball.y + 10 >= player.y &&
-        ball.x >= player.x &&
-        ball.x <= player.x + player.width &&
-        ball.y <= player.y + player.height) {
-      ball.speedY = -ball.speedY;
-    }
-
-  }
-
   void _blockCollision(Ball ball,List<Block> blocks) {
     int active = blocks.length;
 
-    for(Block b in blocks) {
-      if(b.broken) {
+    for(Block block in blocks) {
+      if(block.broken) {
         active--;
         continue;
       }
 
-      if(ball.y - 10 <= b.y + b.height &&
-          ball.x >= b.x &&
-          ball.x <= b.x + b.width &&
-          ball.y >= b.y) {
-        ball.speedY = -ball.speedY;
-        b.broken = true;
+      if(block.collision(Ball.diameter(), ball.x, ball.y) ) {
+        block.broken = true;
         active--;
       }
 
@@ -117,7 +108,19 @@ class Game{
       return;
     }
 
-    _playerCollision(ball, player);
+    // Check collision with left and right walls
+    if (ball.x - 10 <= 0 || ball.x + 10 >= MediaQuery.of(context).size.width) {
+      ball.speedX = -ball.speedX;
+    }
+
+    // Check collision with top wall
+    if (ball.y - 10 <= 0) {
+      ball.speedY = -ball.speedY;
+    }
+
+    if(player.collision(ball.x, ball.y) ) {
+      ball.speedY = -ball.speedY;
+    }
 
     _blockCollision(ball, blocks);
 
@@ -126,7 +129,7 @@ class Game{
     }
 
     // Check collision with bottom
-    if (ball.y + 10 >= MediaQuery.of(context).size.height) {
+    if (ball.y + (Ball.diameter()/2) >= MediaQuery.of(context).size.height) {
       state = GameState.lost;
     }
 
