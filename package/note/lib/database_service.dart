@@ -2,6 +2,7 @@ library database_service;
 
 import 'dart:developer';
 import 'dart:io';
+import 'package:flutter/rendering.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -17,6 +18,7 @@ const Map<ColumnNames,String> columns = {ColumnNames.id: "id",
 };
 
 class DatabaseService {
+
   Future<Database> initialize() async {
     String path = await getDatabasesPath();
 
@@ -37,9 +39,12 @@ class DatabaseService {
   }
 
   Future create(Note note) async {
-    int result = 0;
     final Database db = await initialize();
-    final id = await db.insert(tableName, note.toMap(),
+
+    Map<String,dynamic> data = note.toMap();
+    data["date"] = DateTime.now().toIso8601String();
+
+    final id = await db.insert(tableName, data,
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
@@ -49,6 +54,23 @@ class DatabaseService {
         await db.query(tableName, orderBy: 'DATETIME(${columns[ColumnNames.date]})');
 
     return queryResult.map((e) => Note.fromMap(e)).toList();
+  }
+
+  Future update(Note n) async {
+    Database db = await initialize();
+
+    await db.update(
+      tableName,
+      {
+        if(n.title != "") "title":n.title,
+        if(n.body != "") "body":n.body,
+        "date" : DateTime.now().toIso8601String()
+      },
+      where: 'id = ?',
+      whereArgs: [n.id],
+      conflictAlgorithm: ConflictAlgorithm.rollback
+    );
+
   }
 
   Future delete(String id) async {

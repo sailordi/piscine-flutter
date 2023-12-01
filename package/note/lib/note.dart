@@ -1,20 +1,36 @@
 library note;
 
+import 'package:intl/intl.dart';
+
 class Note {
-  final int id;
+  int? id;
   String title;
   String body;
-  String date;
+  String date = "";
 
-  Note({required this.id,
-    required this.title,
-    required this.body,
-    required this.date});
+  Note({int? id,required this.title,required this.body,String date = ""}) {
+    if(date == "") {
+      this.date = DateTime.now().toIso8601String();
+    }else {
+      this.date = date;
+    }
+
+    if(id != null) {
+      this.id = id;
+    }
+
+  }
+
+  String formattedDate(String format) {
+    DateTime dateTime = DateTime.parse(date);
+
+      return DateFormat(format).format(dateTime);
+  }
 
   // Convert a Person object into a Map
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
+      if(id != null) 'id': id,
       'title': title,
       'body': body,
       'date': date,
