@@ -30,7 +30,7 @@ class DatabaseService {
             ${columns[ColumnNames.id]} INTEGER PRIMARY KEY AUTOINCREMENT,
             ${columns[ColumnNames.title]} TEXT NOT NULL,
             ${columns[ColumnNames.body]} TEXT NOT NULL,
-            ${columns[ColumnNames.date]} TEXT NOT NULL,
+            ${columns[ColumnNames.date]} TEXT NOT NULL
             )''',
         );
       },
@@ -73,7 +73,7 @@ class DatabaseService {
 
   }
 
-  Future delete(String id) async {
+  Future delete(int id) async {
     final Database db = await initialize();
     try {
       await db.delete(tableName, where: '${columns[ColumnNames.id]} = ?', whereArgs: [id]);

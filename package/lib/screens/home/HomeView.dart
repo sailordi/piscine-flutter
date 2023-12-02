@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:note/note.dart';
 import 'package:note/database_service.dart';
 import 'package:package/screens/create_update/CreateUpdateView.dart';
+import 'package:package/widgets/ListWidget.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -36,6 +37,28 @@ class _HomeViewState extends State<HomeView> {
 
   }
 
+  Future _removeItem(Note n) async {
+    await _dbService.delete(n.id!);
+    _refreshNotes();
+  }
+
+  Future _editItem(Note n) async {
+    showDialog(context: context,
+      builder: (_) => CreateUpdateView(
+        note: n,
+        onSubmit: (title,body) async{
+          if(title == n.title) { title = ""; }
+          if(body == n.body) { body = ""; }
+
+          await _dbService.update(Note(id:n.id,title: title, body: body) );
+          if(!mounted) return;
+          _refreshNotes();
+          Navigator.of(context).pop();
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -65,22 +88,14 @@ class _HomeViewState extends State<HomeView> {
             builder: (context,snapshot) {
               if(snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: CircularProgressIndicator(),);
+              }else if (snapshot.hasError) {
+                return const Center(child: Text('Error loading notes'));
+              }else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                return const Center(child: Text('No notes'));
               }else {
                 final data = snapshot.data!;
 
-                return data.isEmpty ?
-                  const Center(child: Text("No notes",
-                    style: TextStyle(fontSize: 28,fontWeight: FontWeight.bold),
-                      ),
-                  ) :
-                  ListView.separated(separatorBuilder: (context,index) =>
-                      const SizedBox(height: 12),
-                    itemCount: data.length,
-                    itemBuilder: (context,index){
-                      final n = data[index];
-
-                    }
-                  );
+                return ListWidget.list(data,_removeItem,_editItem);
               }
             }
           )
