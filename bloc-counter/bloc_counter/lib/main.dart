@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'bloc/counter_bloc.dart';
+import 'widgets/your_widgets.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,32 +13,35 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Bloc Counter',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Bloc Counter'),
+      home: BlocProvider<CounterBloc>(
+        create: (context) => CounterBloc(),
+        child: Home(),
+      ),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
+class Home extends StatefulWidget {
+  const Home({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<Home> createState() => _HomeState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _HomeState extends State<Home> {
 
   void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+    BlocProvider.of<CounterBloc>(context).add(CounterEvent.increment);
+  }
+
+  void _decrementCounter() {
+    BlocProvider.of<CounterBloc>(context).add(CounterEvent.decrement);
   }
 
   @override
@@ -43,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: const Text("Bloc Counter"),
       ),
       body: Center(
         child: Column(
@@ -52,18 +58,21 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            BlocBuilder<CounterBloc, int>(
+              builder: (context, count) {
+                return Text('$count', style: Theme.of(context).textTheme.headline1);
+              },
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          YourWidgets.btn('Increment', const Icon(Icons.add),_incrementCounter),
+          YourWidgets.btn('Decrement', const Icon(Icons.remove),_decrementCounter),
+      ]
+      )
     );
   }
 }
