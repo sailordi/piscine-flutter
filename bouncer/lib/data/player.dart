@@ -18,10 +18,10 @@ class Player {
 
   Player({required this.x,required this.y, required this.width,required this.height});
 
-  bool collision(double x,double y) {
-    return y + height >= this.y && x >= this.x &&
-        x <= this.x + width &&
-        y <= this.y + height;
+  bool collision((double,double) ballPos) {
+    return ballPos.$2 + height >= y && ballPos.$1 >= x &&
+        ballPos.$1 <= x + width &&
+        ballPos.$2  <= y + height;
   }
 
   dynamic widget() {

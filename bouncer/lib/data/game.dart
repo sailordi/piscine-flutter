@@ -70,6 +70,8 @@ class Game{
     ball.speedY = ballSpeedY;
     ball.x = ballPosition.$1;
     ball.y = ballPosition.$2;
+    ball.xDir = Direction.none;
+    ball.yDir = Direction.none;
 
     player.x = playerPosition.$1;
     player.y = playerPosition.$2;
@@ -81,7 +83,7 @@ class Game{
     state = GameState.playing;
   }
 
-  void _blockCollision(Ball ball,List<Block> blocks) {
+  bool blockCollision(Ball ball,List<Block> blocks) {
     int active = blocks.length;
 
     for(Block block in blocks) {
@@ -92,47 +94,53 @@ class Game{
 
       if(block.collision(Ball.diameter(), ball.x, ball.y) ) {
         block.broken = true;
+
+        double leftSideDist = (block.x - ball.x).abs();
+        double rightSideDist = (block.x + block.width - ball.x).abs();
+        double topSideDist = (block.y - ball.y).abs();
+        double bottomSideDist = (block.y + block.height - ball.y).abs();
+
+        String min = _findMin(
+          leftSideDist,
+          rightSideDist,
+          topSideDist,
+          bottomSideDist,
+        );
+
+        switch (min) {
+          case "left":
+            ball.xDir = Direction.left;
+            break;
+          case "right":
+            ball.xDir = Direction.right;
+            break;
+          case "up":
+            ball.yDir = Direction.up;
+            break;
+          case "down":
+            ball.yDir = Direction.down;
+            break;
+        }
+
         active--;
       }
 
     }
 
     if(active == 0){
-      state = GameState.won;
+      return true;
     }
+
+    return false;
 
   }
 
-  void checkCollision(BuildContext context,Player player,Ball ball,List<Block> blocks) {
-    if(state != GameState.playing) {
-      return;
-    }
-
-    // Check collision with left and right walls
-    if (ball.x - 10 <= 0 || ball.x + 10 >= MediaQuery.of(context).size.width) {
-      ball.speedX = -ball.speedX;
-    }
-
-    // Check collision with top wall
-    if (ball.y - 10 <= 0) {
-      ball.speedY = -ball.speedY;
-    }
-
-    if(player.collision(ball.x, ball.y) ) {
-      ball.speedY = -ball.speedY;
-    }
-
-    _blockCollision(ball, blocks);
-
-    if(state != GameState.playing) {
-      return;
-    }
-
+  bool isDead(BuildContext context,(double,double) ballPos,double ballDiameter) {
     // Check collision with bottom
-    if (ball.y + (Ball.diameter()/2) >= MediaQuery.of(context).size.height) {
-      state = GameState.lost;
+    if (ballPos.$2 + (ballDiameter/2) >= MediaQuery.of(context).size.height) {
+      return true;
     }
-
+    return false;
   }
 
   void updatePlayer(BuildContext context,Player player,double x) {
@@ -142,6 +150,34 @@ class Game{
       player.x += x * 10;
     }
 
+  }
+
+  String _findMin(double a, double b, double c, double d) {
+    List<double> myList = [
+      a,
+      b,
+      c,
+      d,
+    ];
+
+    double currentMin = a;
+
+    for (int i = 0; i < myList.length; i++) {
+      if (myList[i] < currentMin) {
+        currentMin = myList[i];
+      }
+    }
+
+    if ((currentMin - a).abs() < 0.01) {
+      return "left";
+    } else if ((currentMin - b).abs() < 0.01) {
+      return "right";
+    } else if ((currentMin - c).abs() < 0.01) {
+      return "top";
+    } else if ((currentMin - d).abs() < 0.01) {
+      return "bottom";
+    }
+    return "";
   }
 
 }

@@ -1,11 +1,15 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 
+enum Direction { none,up, down, left, right }
+
 class Ball {
   double x;
   double y;
   double speedX;
   double speedY;
+  Direction xDir = Direction.none;
+  Direction yDir = Direction.none;
 
   Ball(
       {required this.x,
@@ -15,8 +19,40 @@ class Ball {
       });
 
   void move() {
-    x += speedX;
-    y += speedY;
+    if (xDir== Direction.left) {
+      x -= speedX;
+    } else if (xDir == Direction.right) {
+      x += speedX;
+    }
+    // move vertically
+    if (yDir == Direction.down) {
+      y += speedY;
+    } else if (yDir == Direction.up) {
+      y -= speedY;
+    }
+  }
+
+  (double,double) pos() {
+    return (x,y);
+  }
+
+  void updateDir(BuildContext context,bool playerCollision) {
+    // Check collision with left and right walls
+    if (x - 10 <= 0) {
+      xDir = Direction.left;
+    }
+    else if(x + 10 >= MediaQuery.of(context).size.width) {
+      xDir = Direction.right;
+    }
+    // Check collision with top wall
+    if (y - 10 <= 0) {
+      yDir = Direction.down;
+    }
+    // ball goes up when it hits player
+    if (playerCollision) {
+      yDir = Direction.up;
+    }
+
   }
 
   static double diameter() { return 20; }

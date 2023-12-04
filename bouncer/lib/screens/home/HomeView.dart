@@ -48,13 +48,34 @@ class _HomeViewState extends State<HomeView> {
       game.state = GameState.playing;
     });
 
-    // Game loop
-    Timer.periodic(const Duration(milliseconds: 16), (Timer timer) {
+    _gameLoop();
+  }
+
+  void _gameLoop() {
+    Timer.periodic(const Duration(milliseconds: 10), (Timer timer) {
       if (game.state == GameState.playing) {
+        bool hitPlayer = player.collision(ball.pos() );
+        ball.updateDir(context,hitPlayer);
+        ball.move();
+
+        if(game.isDead(context, ball.pos(),Ball.diameter() ) ) {
+          game.state = GameState.lost;
+        }else {
+          if(game.blockCollision(ball,blocks) == true) {
+            game.state = GameState.won;
+          }
+        }
+
         setState(() {
-          ball.move();
-          game.checkCollision(context,player,ball,blocks);
+          ball;
+          blocks;
+          game;
         });
+
+        if(game.state != GameState.playing) {
+          timer.cancel();
+        }
+
       }
 
     });
@@ -70,6 +91,7 @@ class _HomeViewState extends State<HomeView> {
       blocks;
     });
 
+    _gameLoop();
   }
 
   dynamic _btn(String text,void Function() f,{String topText = ""}) {
