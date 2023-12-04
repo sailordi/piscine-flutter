@@ -15,18 +15,20 @@ class DetailedScreen extends StatelessWidget {
         title: Text('MovieList: ${movie.title}'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          ImageWidget.detailedImage(movie.poster),
-          TextWidget.detailedText('Genres: ', movie.genre),
-          TextWidget.detailedText('Director: ', movie.director),
-          TextWidget.detailedText('Actors: ', movie.actors,newRow: true),
-          TextWidget.detailedText('Awards: ', movie.awards,newRow: true),
-          TextWidget.detailedText('Rating: ', movie.rating),
-          TextWidget.detailedText('IMDB rating: ', movie.imdbRating),
-        ],
-      ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            ImageWidget.detailedImage(movie.poster),
+            TextWidget.detailedText('Genres: ', movie.genre),
+            TextWidget.detailedText('Director: ', movie.director),
+            TextWidget.detailedText('Actors: ', movie.actors,newRow: true),
+            TextWidget.detailedText('Awards: ', movie.awards,newRow: true),
+            TextWidget.detailedText('Rating: ', movie.rating),
+            TextWidget.detailedText('IMDB rating: ', movie.imdbRating),
+          ],
+        ),
+      )
     );
   }
 
