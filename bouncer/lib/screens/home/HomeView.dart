@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:bouncer/data/block.dart';
 import 'package:flutter/material.dart';
 import 'package:sensors_plus/sensors_plus.dart';
 import 'package:bouncer/data/game.dart';
@@ -94,39 +93,36 @@ class _HomeViewState extends State<HomeView> {
     _gameLoop();
   }
 
-  dynamic _btn(String text,void Function() f,{String topText = ""}) {
-    if(topText.isEmpty) {
-      ElevatedButton(
+  dynamic _btn(String text,void Function() f) {
+    return Center(
+        child: ElevatedButton(
         onPressed: f,
         child: Text(text),
-      );
-    }
+      ),
+    );
+  }
+
+  dynamic _btnWithTopText(String text,void Function() f,String topText) {
     return Column(
         children: <Widget>[
-          Text(topText),
+          Text(topText,style: const TextStyle(fontSize: 20) ),
           ElevatedButton(
             onPressed: f,
             child: Text(text),
           )
         ],
       );
-
   }
 
   dynamic _gameField() {
     if(game.state == GameState.won) {
-      return Center(
-        child: _btn("Continue game",_restart,topText: "You won"),
-      );
+      return _btnWithTopText("Continue",_restart,"You won");
     } else if(game.state == GameState.lost) {
-      return Center(
-        child: _btn("Restart game",_restart,topText: "You lost"),
-      );
+      return _btnWithTopText("Restart",_restart,"You lost");
     }else if(game.state == GameState.notStarted) {
-      return Center(
-        child: _btn("Start game",_startGame),
-      );
+      return _btn("Start game",_startGame);
     }
+
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,

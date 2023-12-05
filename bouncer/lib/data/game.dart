@@ -70,8 +70,8 @@ class Game{
     ball.speedY = ballSpeedY;
     ball.x = ballPosition.$1;
     ball.y = ballPosition.$2;
-    ball.xDir = Direction.none;
-    ball.yDir = Direction.none;
+    ball.xDir = Direction.left;
+    ball.yDir = Direction.down;
 
     player.x = playerPosition.$1;
     player.y = playerPosition.$2;
@@ -92,34 +92,28 @@ class Game{
         continue;
       }
 
-      if(block.collision(Ball.diameter(), ball.x, ball.y) ) {
+      Rect ballR = ball.rect();
+      Rect blockR = block.rect();
+
+
+      if(!ballR.intersect(blockR).isEmpty) {
         block.broken = true;
 
-        double leftSideDist = (block.x - ball.x).abs();
-        double rightSideDist = (block.x + block.width - ball.x).abs();
-        double topSideDist = (block.y - ball.y).abs();
-        double bottomSideDist = (block.y + block.height - ball.y).abs();
-
-        String min = _findMin(
-          leftSideDist,
-          rightSideDist,
-          topSideDist,
-          bottomSideDist,
-        );
-
-        switch (min) {
-          case "left":
-            ball.xDir = Direction.left;
-            break;
-          case "right":
-            ball.xDir = Direction.right;
-            break;
-          case "up":
-            ball.yDir = Direction.up;
-            break;
-          case "down":
-            ball.yDir = Direction.down;
-            break;
+        //Ball hit left side
+        if(ball.x+Ball.diameter()-1 <= blockR.left) {
+          ball.xDir = Direction.right;
+        }
+        //Ball hit right side
+        else if(ball.x+Ball.diameter()/2+1 >= blockR.right+blockR.width) {
+          ball.xDir = Direction.right;
+        }
+        //Ball hits bottom
+        else if(ball.y <= blockR.bottom) {
+          ball.yDir = Direction.down;
+        }
+        //Ball hits top
+        else if(ball.y + Ball.diameter()/2 >= blockR.bottom+blockR.height) {
+          ball.yDir = Direction.up;
         }
 
         active--;

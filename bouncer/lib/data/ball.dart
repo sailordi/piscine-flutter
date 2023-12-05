@@ -1,15 +1,15 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 
-enum Direction { none,up, down, left, right }
+enum Direction { up, down, left, right }
 
 class Ball {
   double x;
   double y;
   double speedX;
   double speedY;
-  Direction xDir = Direction.none;
-  Direction yDir = Direction.none;
+  Direction xDir = Direction.left;
+  Direction yDir = Direction.down;
 
   Ball(
       {required this.x,
@@ -36,13 +36,17 @@ class Ball {
     return (x,y);
   }
 
+  Rect rect() {
+    return Rect.fromLTRB(x,y,x + Ball.diameter(),y + Ball.diameter() );
+  }
+
   void updateDir(BuildContext context,bool playerCollision) {
     // Check collision with left and right walls
     if (x - 10 <= 0) {
-      xDir = Direction.left;
+      xDir = Direction.right;
     }
     else if(x + 10 >= MediaQuery.of(context).size.width) {
-      xDir = Direction.right;
+      xDir = Direction.left;
     }
     // Check collision with top wall
     if (y - 10 <= 0) {

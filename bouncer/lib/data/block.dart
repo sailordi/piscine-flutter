@@ -19,11 +19,8 @@ class Block {
     required this.color,
   });
 
-  bool collision(double diameter,double x,double y) {
-    return y - (diameter/2) <= this.y + height - extraBottom &&
-      x >= this.x +extraLeft &&
-      x <= this.x + width - extraLeft &&
-      y >= this.y + extraBottom;
+  Rect rect() {
+    return Rect.fromLTRB(x+extraLeft,y+extraBottom,x + width-extraBottom,y + height-extraLeft);
   }
 
   dynamic widget() {
