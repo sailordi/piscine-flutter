@@ -5,29 +5,22 @@ class FavoritePlacesView extends StatefulWidget {
 
   @override
   State<FavoritePlacesView> createState() => _FavoritePlacesViewState();
-
 }
 
 class _FavoritePlacesViewState extends State<FavoritePlacesView> {
-  List<String> _favoritePlaces = [];
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: _favoritePlaces.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          title: Text(_favoritePlaces[index]),
-          trailing: IconButton(
-            icon: const Icon(Icons.delete),
-            onPressed: () {
-              setState(() {
-                _favoritePlaces.removeAt(index);
-              });
-            },
-          ),
-        );
-      },
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Map makers: Favorites'),
+          elevation: 2,
+        ),
+        body:
+        const Text("Favorite places"),
+      ),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

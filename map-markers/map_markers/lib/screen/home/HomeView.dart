@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:map_markers/bloc/index_bloc.dart';
+import 'package:map_markers/screen/map/MapView.dart';
+import 'package:map_markers/screen/favorites/FavoritePlacesView.dart';
+import 'package:map_markers/screen/info/InfoView.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -9,33 +13,44 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  final Map<String, Marker> _markers = {};
 
-  Future<void> _onMapCreated(GoogleMapController controller) async {
-
-  }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        useMaterial3: true,
-        colorSchemeSeed: Colors.green[700],
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Map makers'),
-          elevation: 2,
-        ),
-        body: GoogleMap(
-          onMapCreated: _onMapCreated,
-          initialCameraPosition: const CameraPosition(
-            target: LatLng(0, 0),
-            zoom: 2,
-          ),
-          markers: _markers.values.toSet(),
-        ),
-      ),
-    );
-  }
+      return BlocBuilder<IndexBloc,IndexState>(
+        builder: (context, state) {
+          return Scaffold(
+            body: IndexedStack(
+              index: state.index,
+              children: const [
+                MapView(),
+                FavoritePlacesView(),
+                InfoView()
+              ],
+            ),
+            bottomNavigationBar: BottomNavigationBar(
+              currentIndex: state.index,
+                items: const [
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.map),
+                    label: 'Map',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.favorite),
+                    label: 'Favorites',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.info),
+                    label: 'Info',
+                  ),
+                ],
+                onTap: (index) {
+                  context.read<IndexBloc>().add(UpdateIndex(i: index) );
+                },
+            )
+          );
+        },
+      );
+    }
+
 }
